@@ -6,6 +6,7 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Panther\Client;
+use Symfony\Component\Panther\DomCrawler\Crawler;
 
 class AvitoScraperCommand extends Command
 {
@@ -14,19 +15,29 @@ class AvitoScraperCommand extends Command
 
     protected function configure()
     {
-        
+
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $client = Client::createChromeClient();
-        $crawler = $client->request('GET', 'https://www.avito.ma/fr/maroc/voitures-à_vendre');
-        $fullPageHtml = $crawler->html();
-        $pageH1 = $crawler->filter('h1')->first()->text();
-        $output->writeln([
-            'avito : ',
-            '============',
-            $pageH1,
-        ]);
+        $cars = [];
+        for ($i = 1; $i <= 1; $i++) {
+            $crawler = $client->request('GET', 'https://www.avito.ma/fr/maroc/voitures-à_vendre?o=' . $i);
+            $nodeValues = $crawler->filter('h2[class=fs14]')->each(function (Crawler $node, $i) {
+                return $node->children('a')->attr('href');
+            });
+
+
+            foreach ($nodeValues as $link) {
+                $crawler = $client->request('GET', $link);
+                $car = new Car();
+            }
+
+            $output->writeln([
+                '============',
+            ]);
+        }
+
     }
 }
