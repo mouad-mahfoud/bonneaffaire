@@ -29,3 +29,4 @@
 \.php_cs\.dist
 
 phpcs\.xml\.dist
+/.metadata/

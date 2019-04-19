@@ -16,7 +16,7 @@ class Car
     /**
      * @MongoDB\Field(type="string")
      */
-    protected $name;
+    protected $title;
 
     /**
      * @MongoDB\Field(type="float")
@@ -61,6 +61,21 @@ class Car
      * @MongoDB\Field(type="collection")
      */
     protected $images;
+    
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $views;
+
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $link;
+
+
+
+
+
 
     /**
      * Get the value of id
@@ -71,21 +86,21 @@ class Car
     }
 
     /**
-     * Get the value of name
+     * Get the value of title
      */ 
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->Title;
     }
 
     /**
-     * Set the value of name
+     * Set the value of Title
      *
      * @return  self
      */ 
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
 
         return $this;
     }
@@ -266,6 +281,46 @@ class Car
     public function setImages($images)
     {
         $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of views
+     */ 
+    public function getViews()
+    {
+        return $this->views;
+    }
+
+    /**
+     * Set the value of views
+     *
+     * @return  self
+     */ 
+    public function setViews($views)
+    {
+        $this->views = $views;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of link
+     */ 
+    public function getLink()
+    {
+        return $this->link;
+    }
+
+    /**
+     * Set the value of link
+     *
+     * @return  self
+     */ 
+    public function setLink($link)
+    {
+        $this->link = $link;
 
         return $this;
     }
