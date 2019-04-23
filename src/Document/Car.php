@@ -31,7 +31,12 @@ class Car
     /**
      * @MongoDB\Field(type="int")
      */
-    protected $mileage;
+    protected $mileageMin;
+  
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $mileageMax;
 
     /**
      * @MongoDB\Field(type="string")
@@ -42,6 +47,11 @@ class Car
      * @MongoDB\Field(type="string")
      */
     protected $mark;
+    
+    /**
+     * @MongoDB\Field(type="string")
+     */
+    protected $model;
 
     /**
      * @MongoDB\Field(type="int")
@@ -79,7 +89,7 @@ class Car
 
     /**
      * Get the value of id
-     */ 
+     */
     public function getId()
     {
         return $this->id;
@@ -87,7 +97,7 @@ class Car
 
     /**
      * Get the value of title
-     */ 
+     */
     public function getTitle()
     {
         return $this->Title;
@@ -97,7 +107,7 @@ class Car
      * Set the value of Title
      *
      * @return  self
-     */ 
+     */
     public function setTitle($title)
     {
         $this->title = $title;
@@ -107,7 +117,7 @@ class Car
 
     /**
      * Get the value of price
-     */ 
+     */
     public function getPrice()
     {
         return $this->price;
@@ -117,7 +127,7 @@ class Car
      * Set the value of price
      *
      * @return  self
-     */ 
+     */
     public function setPrice($price)
     {
         $this->price = $price;
@@ -127,7 +137,7 @@ class Car
 
     /**
      * Get the value of modelYear
-     */ 
+     */
     public function getModelYear()
     {
         return $this->modelYear;
@@ -137,7 +147,7 @@ class Car
      * Set the value of modelYear
      *
      * @return  self
-     */ 
+     */
     public function setModelYear($modelYear)
     {
         $this->modelYear = $modelYear;
@@ -145,29 +155,11 @@ class Car
         return $this;
     }
 
-    /**
-     * Get the value of mileage
-     */ 
-    public function getMileage()
-    {
-        return $this->mileage;
-    }
 
-    /**
-     * Set the value of mileage
-     *
-     * @return  self
-     */ 
-    public function setMileage($mileage)
-    {
-        $this->mileage = $mileage;
-
-        return $this;
-    }
 
     /**
      * Get the value of fuelType
-     */ 
+     */
     public function getFuelType()
     {
         return $this->fuelType;
@@ -177,7 +169,7 @@ class Car
      * Set the value of fuelType
      *
      * @return  self
-     */ 
+     */
     public function setFuelType($fuelType)
     {
         $this->fuelType = $fuelType;
@@ -187,7 +179,7 @@ class Car
 
     /**
      * Get the value of mark
-     */ 
+     */
     public function getMark()
     {
         return $this->mark;
@@ -197,7 +189,7 @@ class Car
      * Set the value of mark
      *
      * @return  self
-     */ 
+     */
     public function setMark($mark)
     {
         $this->mark = $mark;
@@ -207,7 +199,7 @@ class Car
     
     /**
      * Get the value of fiscalPower
-     */ 
+     */
     public function getFiscalPower()
     {
         return $this->fiscalPower;
@@ -217,7 +209,7 @@ class Car
      * Set the value of fiscalPower
      *
      * @return  self
-     */ 
+     */
     public function setFiscalPower($fiscalPower)
     {
         $this->fiscalPower = $fiscalPower;
@@ -227,7 +219,7 @@ class Car
 
     /**
      * Get the value of city
-     */ 
+     */
     public function getCity()
     {
         return $this->city;
@@ -237,7 +229,7 @@ class Car
      * Set the value of city
      *
      * @return  self
-     */ 
+     */
     public function setCity($city)
     {
         $this->city = $city;
@@ -247,7 +239,7 @@ class Car
 
     /**
      * Get the value of postedAt
-     */ 
+     */
     public function getPostedAt()
     {
         return $this->postedAt;
@@ -257,7 +249,7 @@ class Car
      * Set the value of postedAt
      *
      * @return  self
-     */ 
+     */
     public function setPostedAt($postedAt)
     {
         $this->postedAt = $postedAt;
@@ -267,7 +259,7 @@ class Car
 
     /**
      * Get the value of images
-     */ 
+     */
     public function getImages()
     {
         return $this->images;
@@ -277,7 +269,7 @@ class Car
      * Set the value of images
      *
      * @return  self
-     */ 
+     */
     public function setImages($images)
     {
         $this->images = $images;
@@ -287,7 +279,7 @@ class Car
 
     /**
      * Get the value of views
-     */ 
+     */
     public function getViews()
     {
         return $this->views;
@@ -297,7 +289,7 @@ class Car
      * Set the value of views
      *
      * @return  self
-     */ 
+     */
     public function setViews($views)
     {
         $this->views = $views;
@@ -307,7 +299,7 @@ class Car
 
     /**
      * Get the value of link
-     */ 
+     */
     public function getLink()
     {
         return $this->link;
@@ -317,10 +309,70 @@ class Car
      * Set the value of link
      *
      * @return  self
-     */ 
+     */
     public function setLink($link)
     {
         $this->link = $link;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mileageMin
+     */
+    public function getMileageMin()
+    {
+        return $this->mileageMin;
+    }
+
+    /**
+     * Set the value of mileageMin
+     *
+     * @return  self
+     */
+    public function setMileageMin($mileageMin)
+    {
+        $this->mileageMin = $mileageMin;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of mileageMax
+     */
+    public function getMileageMax()
+    {
+        return $this->mileageMax;
+    }
+
+    /**
+     * Set the value of mileageMax
+     *
+     * @return  self
+     */
+    public function setMileageMax($mileageMax)
+    {
+        $this->mileageMax = $mileageMax;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of model
+     */ 
+    public function getModel()
+    {
+        return $this->model;
+    }
+
+    /**
+     * Set the value of model
+     *
+     * @return  self
+     */ 
+    public function setModel($model)
+    {
+        $this->model = $model;
 
         return $this;
     }

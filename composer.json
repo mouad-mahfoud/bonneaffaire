@@ -9,6 +9,7 @@
         "doctrine/mongodb-odm-bundle": "^3.5",
         "fabpot/goutte": "^3.2",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "php-ai/php-ml": "^0.8.0",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.1",

@@ -149,6 +149,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.2"
     },
+    "php-ai/php-ml": {
+        "version": "0.8.0"
+    },
     "php-cs-fixer/diff": {
         "version": "v1.3.0"
     },
