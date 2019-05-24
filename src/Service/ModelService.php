@@ -8,7 +8,7 @@ use App\Document\Car;
 use Doctrine\ODM\MongoDB\DocumentManager;
 use Phpml\Math\Statistic\Mean;
 
-class MarkService
+class ModelService
 {
 
     private $dm;
@@ -21,25 +21,24 @@ class MarkService
     /**
      * @return DocumentManager
      */
-    public function getAllMark()
+    public function getAllModel($mark)
     {
-        $marks = [];
-        $markList = $this->dm->getRepository(Car::class)->findAllMarks();
-        foreach ($markList as $mark)
+        $models = [];
+        $modelsList = $this->dm->getRepository(Car::class)->findAllModels($mark);
+        foreach ($modelsList as $model)
         {
-            array_push($marks, [$mark => $this->getPriceMode($mark)]);
+            array_push($models, [$model => $this->getPriceModel($model)]);
         }
-        return $marks;
+        return $models;
     }
 
     /**
      * @return float
      */
-    public function getPriceMode($mark): float
+    public function getPriceModel($model): float
     {
-
         $prices = [];
-        $priceList = $this->dm->getRepository(Car::class)->findAllPriceByMark($mark);
+        $priceList = $this->dm->getRepository(Car::class)->findAllPriceByModel($model);
         foreach ($priceList as $price)
         {
             array_push($prices, (int)$price['price']);
