@@ -9,12 +9,18 @@
         "doctrine/mongodb-odm-bundle": "^3.5",
         "fabpot/goutte": "^3.2",
         "friendsofphp/php-cs-fixer": "^2.14",
+        "friendsofsymfony/rest-bundle": "^2.5",
+        "php-ai/php-ml": "^0.8.0",
+        "sensio/framework-extra-bundle": "^5.3",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",
         "symfony/flex": "^1.1",
         "symfony/framework-bundle": "4.2.*",
+        "symfony/monolog-bundle": "^3.3",
         "symfony/orm-pack": "^1.0",
         "symfony/panther": "^0.3.0",
+        "symfony/serializer": "4.2.*",
+        "symfony/twig-bundle": "4.2.*",
         "symfony/yaml": "4.2.*"
     },
     "config": {

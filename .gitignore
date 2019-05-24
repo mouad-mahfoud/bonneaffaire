@@ -23,10 +23,9 @@
 ###< squizlabs/php_codesniffer ###
 
 .history/
-
+.idea/
 \.project
-
 \.php_cs\.dist
-
 phpcs\.xml\.dist
 /.metadata/
+/nbproject/private/
