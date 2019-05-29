@@ -27,7 +27,7 @@ class ModelService
         $modelsList = $this->dm->getRepository(Car::class)->findAllModels($mark);
         foreach ($modelsList as $model)
         {
-            array_push($models, [$model => $this->getPriceModel($model)]);
+            array_push($models, ['model' => $model, 'price' => $this->getPriceModel($model)]);
         }
         return $models;
     }

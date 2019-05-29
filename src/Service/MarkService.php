@@ -27,7 +27,7 @@ class MarkService
         $markList = $this->dm->getRepository(Car::class)->findAllMarks();
         foreach ($markList as $mark)
         {
-            array_push($marks, [$mark => $this->getPriceMode($mark)]);
+            array_push($marks, ['mark' => $mark, 'price' => $this->getPriceMode($mark)]);
         }
         return $marks;
     }
