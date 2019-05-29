@@ -33,6 +33,20 @@ class MarkService
     }
 
     /**
+     * @return DocumentManager
+     */
+    public function getAllMarksWithNumberOfAds()
+    {
+        $marks = [];
+        $markList = $this->dm->getRepository(Car::class)->findAllMarks();
+        foreach ($markList as $mark)
+        {
+            array_push($marks, ['name' => $mark, 'value' => $this->dm->getRepository(Car::class)->countAds('mark', $mark)]);
+        }
+        return $marks;
+    }
+
+    /**
      * @return float
      */
     public function getPriceMode($mark): float
@@ -47,5 +61,7 @@ class MarkService
         return Mean::mode($prices);
 
     }
+
+
 
 }

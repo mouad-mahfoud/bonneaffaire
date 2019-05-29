@@ -47,4 +47,14 @@ class CarRepository extends DocumentRepository
             ->getQuery()
             ->toArray();                                                                                                    ;
     }
+    
+    public function countAds($field, $value)
+    {
+        return $this->createQueryBuilder(Car::class)
+            ->eagerCursor(true)
+            ->hydrate(false)
+            ->field($field)->equals($value)
+            ->getQuery()
+            ->execute()->count();                                                                                                   ;
+    }
 }

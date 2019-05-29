@@ -18,4 +18,13 @@ class MarkController extends AbstractFOSRestController
     {
         return $markService->getAllMark();
     }
+    
+    /**
+     * @Rest\Get("/marks/count-ads", name="marks_count_ads")
+     * @View(statusCode=200)
+     */
+    public function getMarksWithCountAds(MarkService $markService)
+    {
+        return $markService->getAllMarksWithNumberOfAds();
+    }
 }
