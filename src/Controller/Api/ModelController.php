@@ -19,4 +19,13 @@ class ModelController extends AbstractFOSRestController
     {
         return $modelService->getAllModel($mark);
     }
+
+    /**
+     * @Rest\Get("/models/count-ads/{mark}", name="models_count_ads")
+     * @View(statusCode=200)
+     */
+    public function getMarksWithCountAds($mark, ModelService $modelService)
+    {
+        return $modelService->getAllModelsWithNumberOfAds($mark);
+    }
 }

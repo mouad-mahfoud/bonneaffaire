@@ -33,6 +33,26 @@ class ModelService
     }
 
     /**
+     * @return DocumentManager
+     */
+    public function getAllModelsWithNumberOfAds($mark)
+    {
+        $models = [];
+        $modelList = $this->dm->getRepository(Car::class)->findAllmodels($mark);
+        foreach ($modelList as $model)
+        {
+            array_push($models,
+                [
+                    'model' => $model,
+                    'numberOfAds' => $this->dm->getRepository(Car::class)
+                                        ->countAds('model', $model)
+                ]
+            );
+        }
+        return $models;
+    }
+
+    /**
      * @return float
      */
     public function getPriceModel($model): float
