@@ -17,6 +17,42 @@ class CarRepository extends DocumentRepository
             ->execute();                                                                                                    ;
     }
 
+    public function findAllCarsWithIdsNull()
+    {
+
+        $qb = $this->createQueryBuilder('car');
+        return $qb->addOr($qb->expr()->field('markId')->equals(null))
+                ->addOr($qb->expr()->field('modelId')->equals(null))
+                ->addOr($qb->expr()->field('cityId')->equals(null))
+                ->addOr($qb->expr()->field('fuelTypeId')->equals(null))
+                ->getQuery()
+                ->execute();
+    }
+
+    public function findAllModelsInCarCollection()
+    {
+        return $this->createQueryBuilder('car')
+            ->distinct('model')
+            ->getQuery()
+            ->execute();                                                                                                    ;
+    }
+
+    public function findAllFuelType()
+    {
+        return $this->createQueryBuilder('car')
+            ->distinct('fuelType')
+            ->getQuery()
+            ->execute();                                                                                                    ;
+    }
+
+    public function findAllCities()
+    {
+        return $this->createQueryBuilder('car')
+            ->distinct('city')
+            ->getQuery()
+            ->execute();                                                                                                    ;
+    }
+
     public function findAllPriceByMark($mark)
     {
         return $this->createQueryBuilder(Car::class)

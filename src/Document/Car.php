@@ -38,20 +38,36 @@ class Car
      */
     protected $mileageMax;
 
+
     /**
      * @MongoDB\Field(type="string")
      */
     protected $fuelType;
 
     /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $fuelTypeId;
+
+    /**
      * @MongoDB\Field(type="string")
      */
     protected $mark;
+
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $markId;
     
     /**
      * @MongoDB\Field(type="string")
      */
     protected $model;
+
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $modelId;
 
     /**
      * @MongoDB\Field(type="int")
@@ -62,6 +78,11 @@ class Car
      * @MongoDB\Field(type="string")
      */
     protected $city;
+
+    /**
+     * @MongoDB\Field(type="int")
+     */
+    protected $cityId;
 
     /**
      * @MongoDB\Field(type="date")
@@ -84,9 +105,6 @@ class Car
 
 
 
-
-
-
     /**
      * Get the value of id
      */
@@ -100,7 +118,7 @@ class Car
      */
     public function getTitle()
     {
-        return $this->Title;
+        return $this->title;
     }
 
     /**
@@ -154,8 +172,6 @@ class Car
 
         return $this;
     }
-
-
 
     /**
      * Get the value of fuelType
@@ -376,4 +392,69 @@ class Car
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getMarkId()
+    {
+        return $this->markId;
+    }
+
+    /**
+     * @param mixed $markId
+     */
+    public function setMarkId($markId): void
+    {
+        $this->markId = $markId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModelId()
+    {
+        return $this->modelId;
+    }
+
+    /**
+     * @param mixed $modelId
+     */
+    public function setModelId($modelId): void
+    {
+        $this->modelId = $modelId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFuelTypeId()
+    {
+        return $this->fuelTypeId;
+    }
+
+    /**
+     * @param mixed $fuelTypeId
+     */
+    public function setFuelTypeId($fuelTypeId): void
+    {
+        $this->fuelTypeId = $fuelTypeId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
+
+    /**
+     * @param mixed $cityId
+     */
+    public function setCityId($cityId): void
+    {
+        $this->cityId = $cityId;
+    }
+
 }

@@ -7,6 +7,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Panther\Client;
 use Symfony\Component\Panther\DomCrawler\Crawler;
 use App\Document\Car;
@@ -33,6 +34,7 @@ class AvitoScraperCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $io = new SymfonyStyle($input, $output);
         $client = Client::createChromeClient();
         $ads = 1;
         $pages = 1;
@@ -132,7 +134,11 @@ class AvitoScraperCommand extends Command
                     });
                 }
 
-                if ($price !== null && count($images) > 0) {
+                if (
+                    $price !== null && count($images) > 0 && $mark !== null && $model !== null && $fuelType !== null
+                    && $fiscalPower !== null
+                )
+                {
                     $car->setTitle($title);
                     $car->setPrice($price);
                     $car->setModelYear($modelYear);
@@ -148,21 +154,26 @@ class AvitoScraperCommand extends Command
                     $car->setLink($link);
                     $car->setImages($images);
 
+                    $car->setCityId(null);
+                    $car->setFuelTypeId(null);
+                    $car->setModelId(null);
+                    $car->setMarkId(null);
+
                     $this->documentManager->persist($car);
                     $this->documentManager->flush();
 
                     dump($car);
-                    $output->writeln(date('d-m-Y H:m:s').' << Annonce N° : ' . $ads . ' | Page N° : ' . $pages . ' >>');
+                    $io->note(date('d-m-Y H:m:s').' << Annonce N° : ' . $ads . ' | Page N° : ' . $pages . ' >>');
                     $this->logger->notice(date('d-m-Y H:m:s').' << Annonce N° : ' . $ads . ' | Page N° : ' . $pages . ' >>');
 
                     $ads++;
 
                 } else {
-                    $output->writeln('<< Annonce Non Valide >>');
+                    $io->error('<< Annonce Non Valide >>');
                 }
             }
             $pages++;
         }
-        $output->writeln('End');
+        $io->success('End');
     }
 }
