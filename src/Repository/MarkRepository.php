@@ -10,8 +10,10 @@ class MarkRepository extends DocumentRepository
     public function findAllMarks()
     {
         return $this->createQueryBuilder('m')
+            ->eagerCursor(true)
+            ->hydrate(false)
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->toArray();                                                                                                  ;
     }
 
     public function count()

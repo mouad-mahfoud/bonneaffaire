@@ -7,11 +7,13 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 
 class FuelTypeRepository extends DocumentRepository
 {
-    public function findAllMarks()
+    public function getAll()
     {
         return $this->createQueryBuilder('ft')
+            ->eagerCursor(true)
+            ->hydrate(false)
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->toArray();
     }
 
     public function count()
@@ -19,7 +21,8 @@ class FuelTypeRepository extends DocumentRepository
         return $this->createQueryBuilder('ft')
             ->getQuery()
             ->execute()
-            ->count();                                                                                                    ;
+            ->count();
+
     }
 
     public function checkIfExist(string $fuelType)
@@ -28,6 +31,7 @@ class FuelTypeRepository extends DocumentRepository
             ->field('name')->equals($fuelType)
             ->getQuery()
             ->execute()
-            ->count();                                                                                                    ;
+            ->count();
+
     }
 }

@@ -11,6 +11,7 @@
         "friendsofphp/php-cs-fixer": "^2.14",
         "friendsofsymfony/rest-bundle": "^2.5",
         "php-ai/php-ml": "^0.8.0",
+        "phpmd/phpmd": "^2.6",
         "sensio/framework-extra-bundle": "^5.3",
         "symfony/console": "4.2.*",
         "symfony/dotenv": "4.2.*",

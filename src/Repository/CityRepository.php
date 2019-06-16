@@ -7,11 +7,13 @@ use Doctrine\ODM\MongoDB\DocumentRepository;
 
 class CityRepository extends DocumentRepository
 {
-    public function findAllMarks()
+    public function findAllCities()
     {
         return $this->createQueryBuilder('c')
+            ->eagerCursor(true)
+            ->hydrate(false)
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->toArray();
     }
 
     public function count()
@@ -19,7 +21,7 @@ class CityRepository extends DocumentRepository
         return $this->createQueryBuilder('c')
             ->getQuery()
             ->execute()
-            ->count();                                                                                                    ;
+            ->count();
     }
 
     public function checkIfExist(string $city)
@@ -28,6 +30,6 @@ class CityRepository extends DocumentRepository
             ->field('name')->equals($city)
             ->getQuery()
             ->execute()
-            ->count();                                                                                                    ;
+            ->count();
     }
 }

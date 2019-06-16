@@ -93,4 +93,5 @@ class CarRepository extends DocumentRepository
             ->getQuery()
             ->execute()->count();                                                                                                   ;
     }
+
 }
