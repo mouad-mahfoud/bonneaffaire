@@ -8,7 +8,7 @@ use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\Annotations\View;
 
-
+header("Access-Control-Allow-Origin: *");
 class ModelController extends AbstractFOSRestController
 {
     /**
