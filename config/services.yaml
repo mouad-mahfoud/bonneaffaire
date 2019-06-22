@@ -6,7 +6,7 @@
 parameters:
     env(MONGODB_URL): ''
     env(MONGODB_DB): ''
-    ml_models_directory: '%kernel.project_dir%/src/MlModel/CarSvrModel'
+    ml_model_CarSvrModel: '%kernel.project_dir%/src/MlModel/CarSvrModel'
 
 services:
     # default configuration for services in *this* file

@@ -14,7 +14,7 @@ class CarRepository extends DocumentRepository
         return $this->createQueryBuilder('car')
             ->distinct('mark')
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->execute();
     }
 
     public function findAllCarsWithIdsNull()
@@ -34,7 +34,7 @@ class CarRepository extends DocumentRepository
         return $this->createQueryBuilder('car')
             ->distinct('model')
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->execute();
     }
 
     public function findAllFuelType()
@@ -42,7 +42,7 @@ class CarRepository extends DocumentRepository
         return $this->createQueryBuilder('car')
             ->distinct('fuelType')
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->execute();
     }
 
     public function findAllCities()
@@ -50,7 +50,7 @@ class CarRepository extends DocumentRepository
         return $this->createQueryBuilder('car')
             ->distinct('city')
             ->getQuery()
-            ->execute();                                                                                                    ;
+            ->execute();
     }
 
     public function findAllPriceByMark($mark)
@@ -61,7 +61,7 @@ class CarRepository extends DocumentRepository
             ->select('price')
             ->field('mark')->equals($mark)
             ->getQuery()
-            ->toArray();                                                                                                    ;
+            ->toArray();
     }
 
     public function findAllModels($mark)
@@ -70,7 +70,7 @@ class CarRepository extends DocumentRepository
             ->distinct('model')
             ->field('mark')->equals($mark)
             ->getQuery()
-            ->toArray();                                                                                                    ;
+            ->toArray();
     }
 
     public function findAllPriceByModel($model)
@@ -81,7 +81,7 @@ class CarRepository extends DocumentRepository
             ->select('price')
             ->field('model')->equals($model)
             ->getQuery()
-            ->toArray();                                                                                                    ;
+            ->toArray();
     }
     
     public function countAds($field, $value)
@@ -91,7 +91,20 @@ class CarRepository extends DocumentRepository
             ->hydrate(false)
             ->field($field)->equals($value)
             ->getQuery()
-            ->execute()->count();                                                                                                   ;
+            ->execute()->count();
+    }
+
+    public function getPriceAndMileageMax($modelId)
+    {
+        return $this->createQueryBuilder(Car::class)
+            ->eagerCursor(true)
+            ->hydrate(false)
+            ->select('modelId')
+            ->select('price')
+            ->field('modelId')->equals((int)$modelId)
+            ->sort('mileageMax', 'asc')
+            ->getQuery()
+            ->toArray();
     }
 
 }

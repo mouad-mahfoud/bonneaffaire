@@ -41,11 +41,11 @@ class CarDataCleaningCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
 
-        /*$this->removeDocumentsIfContaineNullValues();
+        $this->removeDocumentsIfContaineNullValues();
         $this->cleaningMark($io);
         $this->cleaningModel($io);
         $this->cleaningFuelType($io);
-        $this->cleaningCities($io);*/
+        $this->cleaningCities($io);
         $this->matchMarksAndModelIds($io);
     }
 

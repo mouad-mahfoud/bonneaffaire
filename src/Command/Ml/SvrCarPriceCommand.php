@@ -61,27 +61,30 @@ class SvrCarPriceCommand extends Command
             $io->note(sprintf('%s ==> %s Dh | annonce N° : %s', $car->getTitle(), $car->getPrice(), $i++));
         }
 
-        $io->note('training...');
+        $io->note('the model is training now .....');
+
         $start_time = microtime(true);
+
             $regression->train($samples, $targets);
+
         $end_time = microtime(true);
 
-        echo " Execution time of training = ".($end_time - $start_time)." sec";
+        $io->note(" Execution time of training = ".($end_time - $start_time)." sec") ;
 
 
-        $start_time = microtime(true);
+      /*  $start_time = microtime(true);
             $predect =  $regression->predict([2, 2, 2, 1, 39999, 35000, 10, 1970]);
         $end_time = microtime(true);
         echo " predict time = ".($end_time - $start_time)." sec";
 
-        $io->success(sprintf('%s Dh',$predect)) ;
+        $io->success(sprintf('%s Dh',$predect)) ;*/
 
 
 
 
 //      $filepath = '/path/to/store/the/model';
         $modelManager = new ModelManager();
-        $modelManager->saveToFile($regression, $this->container->getParameter('ml_models_directory'));
+        $modelManager->saveToFile($regression, $this->container->getParameter('ml_model_CarSvrModel'));
         $io->success(sprintf('Model enregistré ;-)')) ;
 
     }
